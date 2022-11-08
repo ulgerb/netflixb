@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block move %}
+    
+
+
+  
+      <!-- Hero image -->
+      <div class="hero-image">
+
+        <div class="hero-text">
+            <h1>Sınırsız film, dizi ve çok daha fazlası.</h1>
+            <h4>İstediğiniz yerde izleyin. İstediğiniz zaman iptal edin.</h4>
+            <p>İzlemeye hazır mısınız? Üyelik oluşturmak veya üyeliğinze erişmek için e-posta adresinizi girin</p>
+
+            <button class="btn btn-secondary btn-lg mt-3">Oynat</button>
+            <button class="btn btn-secondary btn-lg mt-3">Daha Fazla Bilgi</button>
+        </div>
+
+      </div>
+
+      <div class="container">
+          <div class="row mt-5">
+
+            <h3 class="text-light">Netflix'te Popüler</h3>
+            
+            {% for i in movie %}
+            
+            {% if i.classmodel.classmodel == 'populer' %}
+                <div class="col-md-2 col-4 mt-1">
+                    <a href="video.html">
+                        <img src="{{ i.image.url }}" class="w-100" alt="" style="max-height: 100px;">
+                    </a>
+                </div>                
+            {% endif %}
+
+            {% endfor %}
+
+          </div>
+
+          <div class="row mt-5">
+              <h3 class="text-light">Yeni Gelenler</h3>
+
+            {% for i in movie %}
+
+            {% if i.classmodel.classmodel == 'yeni' %}
+            <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{{ i.image.url }}" class="w-100" alt="" style="max-height: 100px;">
+                </a>
+            </div>
+            {% endif %}
+             
+            {% endfor %}
+            
+          </div>
+
+        {% if movie_random %}
+        <div class="row mt-5">
+            <h3 class="text-light">Sizin İçin Öneriler</h3>
+                    
+            {% for i in movie_random %}
+
+            <div class="col-md-2 col-4 mt-1">
+                <a href="video.html">
+                    <img src="{{ i.image.url }}" class="w-100" alt="" style="max-height: 100px;">
+                </a>
+            </div>
+            
+            {% endfor %}
+             
+        </div>
+        {% endif %}
+    </div>
+
+
+     
+
+
+{% endblock move %}
